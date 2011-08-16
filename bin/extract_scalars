@@ -1,15 +1,21 @@
 #!/usr/bin/env ruby
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
-require 'extract-scalars'
+require 'scalar-tools'
+require 'trollop'
 
-directory = ARGV[1]
-keys = ARGV[1]
+opts = Trollop::options do
+  opt :files, "Scalar files to process", :type => :strings, :required => :true
+  opt :keys, "Scalars to extract from files", :type => :strings, :required => :true
+end
+
+Trollop::die :files, "All files specified must exist" unless opts[:files].all? { |file_name| File.exists? file_name }
+
 #keys = "mu baselineServers additionalServers theta1 theta2 startUpTime shutDownTime DataCenter.source.created:count DataCenter.queue.dropped:count DataCenter.queue.queueingTime:mean DataCenter.manager.numberOfStartingUpServers:timeavg DataCenter.manager.numberOfShuttingDownServers:timeavg DataCenter.manager.numberOfOffServers:timeavg DataCenter.manager.numberOfIdleServers:timeavg DataCenter.manager.numberOfBusyServers:timeavg"
 
-values = TupleList.new keys, :ignore => True
-ScalarTools::extract_scalar directrory, values
+values = TupleList.new opts[:keys], :ignore => true
+ScalarTools::extract_scalars opts[:files], values
 
-output = CSV.generate :headers => keys, :write_headers => true do |csv| 
+output = CSV.generate :headers => opts[:keys], :write_headers => true do |csv| 
   values.each { |row| csv << row }
 end
 

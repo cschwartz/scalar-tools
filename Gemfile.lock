@@ -9,6 +9,7 @@ GEM
     rake (0.9.2)
     rcov (0.9.10)
     shoulda (2.11.3)
+    trollop (1.16.2)
     tuplelist (0.2.4)
 
 PLATFORMS
@@ -19,4 +20,5 @@ DEPENDENCIES
   jeweler (~> 1.6.4)
   rcov
   shoulda
+  trollop (>= 1.15)
   tuplelist (>= 0.2.4)

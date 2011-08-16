@@ -11,4 +11,5 @@ group :development do
   gem "jeweler", "~> 1.6.4"
   gem "rcov", ">= 0"
   gem "tuplelist", ">= 0.2.4"
+  gem "trollop", ">= 1.15"
 end

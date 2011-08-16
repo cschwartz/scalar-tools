@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.date = %q{2011-08-16}
   s.description = %q{A set of functions and scripts to process scalar result files of omnet++ simulations}
   s.email = %q{christian@schwartz-raum.de}
+  s.executables = [%q{extract_scalars}]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -19,11 +20,15 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "bin/extract_scalars",
     "lib/scalar-tools.rb",
+    "lib/scalar-tools/extract_scalars.rb",
+    "scalar-tools.gemspec",
     "test/helper.rb",
     "test/test_scalar-tools.rb"
   ]
