@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'extract-scalars'
+
+directory = ARGV[1]
+keys = ARGV[1]
+#keys = "mu baselineServers additionalServers theta1 theta2 startUpTime shutDownTime DataCenter.source.created:count DataCenter.queue.dropped:count DataCenter.queue.queueingTime:mean DataCenter.manager.numberOfStartingUpServers:timeavg DataCenter.manager.numberOfShuttingDownServers:timeavg DataCenter.manager.numberOfOffServers:timeavg DataCenter.manager.numberOfIdleServers:timeavg DataCenter.manager.numberOfBusyServers:timeavg"
+
+values = TupleList.new keys, :ignore => True
+ScalarTools::extract_scalar directrory, values
+
+output = CSV.generate :headers => keys, :write_headers => true do |csv| 
+  values.each { |row| csv << row }
+end
+
+puts output 
+

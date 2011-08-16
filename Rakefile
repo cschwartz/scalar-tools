@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/cschwartz/scalar-tools"
   gem.license = "MIT"
   gem.summary = %Q{A set of functions and scripts to process scalar result files of omnet++ simulations}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.description = gem.summary 
   gem.email = "christian@schwartz-raum.de"
   gem.authors = ["Christian Schwartz"]
   # dependencies defined in Gemfile
